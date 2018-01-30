@@ -7,15 +7,17 @@
 
 import Foundation
 
-fileprivate let ScreenWidth = UIScreen.main.bounds.width
-fileprivate let ScreenHeight = UIScreen.main.bounds.height
-
 
 // MARK: - HSMenu
 
-struct HSMenu {
+public struct HSMenu {
     var icon: UIImage?
     var title: String?
+    
+    public init(icon: UIImage?, title: String?) {
+        self.icon = icon
+        self.title = title
+    }
 }
 
 
@@ -29,12 +31,12 @@ struct HSMenu {
 
 // MARK: - HSPopupMenu
 
-enum HSPopupMenuArrowPosition {
+public enum HSPopupMenuArrowPosition {
     case left
     case right
 }
 
-class HSPopupMenu: UIView {
+public class HSPopupMenu: UIView {
     
     var menuCellSize: CGSize = CGSize(width: 130, height: 44)
     var menuTextFont: UIFont = .systemFont(ofSize: 15)
@@ -61,6 +63,7 @@ class HSPopupMenu: UIView {
         tableView.layer.cornerRadius = 5
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
         tableView.register(HSPopupMenuCell.self, forCellReuseIdentifier: CellID)
         return tableView
@@ -78,7 +81,7 @@ class HSPopupMenu: UIView {
     public init(menuArray: [HSMenu], arrowPoint: CGPoint,
          cellSize: CGSize = CGSize(width: 130, height: 44),
          arrowPosition: HSPopupMenuArrowPosition = .right,
-         frame: CGRect = CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight)) {
+         frame: CGRect = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)) {
         
         super.init(frame: frame)
         
@@ -103,13 +106,16 @@ class HSPopupMenu: UIView {
         self.addSubview(tableView)
         
         self.menuArray = menuArray
+        
+        let window = UIApplication.shared.keyWindow
+        window?.addSubview(self)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         context?.beginPath()
         if self.arrowPosition == .left {
@@ -122,7 +128,7 @@ class HSPopupMenu: UIView {
             let startX = self.arrowPoint.x + arrowWidth/2
             let startY = self.arrowPoint.y + arrowHeight
             context?.move(to: CGPoint(x: startX, y: startY))
-            context?.addLine(to: CGPoint(x: self.arrowPoint.x, y: self.arrowPoint.x))
+            context?.addLine(to: CGPoint(x: self.arrowPoint.x, y: self.arrowPoint.y))
             context?.addLine(to: CGPoint(x: startX - arrowWidth, y: startY))
         }
         context?.closePath()
@@ -131,8 +137,8 @@ class HSPopupMenu: UIView {
         context?.drawPath(using: .fillStroke)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        dismiss()
     }
 }
 
@@ -142,8 +148,8 @@ class HSPopupMenu: UIView {
 extension HSPopupMenu {
     
     public func popUp() {
-        let window = UIApplication.shared.keyWindow
-        window?.addSubview(self)
+//        let window = UIApplication.shared.keyWindow
+//        window?.addSubview(self)
         let frame = self.tableView.frame
         self.tableView.frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: 0, height: 0)
         UIView.animate(withDuration: 0.2) {
@@ -165,15 +171,15 @@ extension HSPopupMenu {
 
 extension HSPopupMenu: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.menuArray.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return self.menuCellSize.height
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellID, for: indexPath) as! HSPopupMenuCell
         let menu = self.menuArray[indexPath.row]
         cell.configureCell(menu: menu)
@@ -184,7 +190,7 @@ extension HSPopupMenu: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         self.delegate?.popupMenu(self, didSelectAt: indexPath.row)

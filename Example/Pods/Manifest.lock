@@ -1,0 +1,19 @@
+PODS:
+  - HSPopupMenu (0.1.0):
+    - SnapKit (~> 4.0.0)
+  - SnapKit (4.0.0)
+
+DEPENDENCIES:
+  - HSPopupMenu (from `../`)
+
+EXTERNAL SOURCES:
+  HSPopupMenu:
+    :path: ../
+
+SPEC CHECKSUMS:
+  HSPopupMenu: 00ae9ad1f249846d2fa88af6d05c59a47da3b4d5
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+
+PODFILE CHECKSUM: fb4030d70ac91d61227c2838066d3d24f1571297
+
+COCOAPODS: 1.4.0

@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'HSPopupMenu_Example' do
+  pod 'HSPopupMenu', :path => '../'
+
+  target 'HSPopupMenu_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

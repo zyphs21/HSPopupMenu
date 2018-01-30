@@ -44,6 +44,7 @@ public class HSPopupMenu: UIView {
     var menuBackgroundColor: UIColor = .white
     var menuLineColor: UIColor = .black
     
+    var tableViewStartPoint: CGPoint = .zero
     var arrowWidth: CGFloat = 10
     var arrowHeight: CGFloat = 10
     var arrowOffset: CGFloat = 10
@@ -92,13 +93,19 @@ public class HSPopupMenu: UIView {
         
         switch arrowPosition {
         case .left:
-            tableView.frame = CGRect(x: arrowPoint.x - arrowWidth/2 - arrowOffset,
-                                     y: arrowPoint.y + arrowHeight,
+            let x = arrowPoint.x - arrowWidth/2 - arrowOffset
+            let y = arrowPoint.y + arrowHeight
+            tableViewStartPoint = CGPoint(x: x, y: y)
+            tableView.frame = CGRect(x: x,
+                                     y: y,
                                      width: cellSize.width,
                                      height: cellSize.height*CGFloat(menuArray.count))
         case .right:
-            tableView.frame = CGRect(x: arrowPoint.x + arrowWidth/2 + arrowOffset,
-                                     y: arrowPoint.y + arrowHeight,
+            let x = arrowPoint.x + arrowWidth/2 + arrowOffset
+            let y = arrowPoint.y + arrowHeight
+            tableViewStartPoint = CGPoint(x: x, y: y)
+            tableView.frame = CGRect(x: x,
+                                     y: y,
                                      width: -cellSize.width,
                                      height: cellSize.height*CGFloat(menuArray.count))
         }
@@ -151,7 +158,7 @@ extension HSPopupMenu {
 //        let window = UIApplication.shared.keyWindow
 //        window?.addSubview(self)
         let frame = self.tableView.frame
-        self.tableView.frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: 0, height: 0)
+        self.tableView.frame = CGRect(x: tableViewStartPoint.x, y: tableViewStartPoint.y, width: 0, height: 0)
         UIView.animate(withDuration: 0.2) {
             self.tableView.frame = frame
         }
@@ -159,7 +166,7 @@ extension HSPopupMenu {
     
     public func dismiss() {
         UIView.animate(withDuration: 0.2, animations: {
-            self.tableView.frame = CGRect(x: self.tableView.frame.origin.x, y: self.tableView.frame.origin.y, width: 0, height: 0)
+            self.tableView.frame = CGRect(x: self.tableViewStartPoint.x, y: self.tableViewStartPoint.y, width: 0, height: 0)
         }) { (finished) in
             self.removeFromSuperview()
         }

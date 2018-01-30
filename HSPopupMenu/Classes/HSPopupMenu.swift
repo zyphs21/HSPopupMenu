@@ -197,7 +197,7 @@ extension HSPopupMenu: UITableViewDelegate, UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        self.dismiss()
         self.delegate?.popupMenu(self, didSelectAt: indexPath.row)
     }
 }

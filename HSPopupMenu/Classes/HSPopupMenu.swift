@@ -155,8 +155,6 @@ public class HSPopupMenu: UIView {
 extension HSPopupMenu {
     
     public func popUp() {
-//        let window = UIApplication.shared.keyWindow
-//        window?.addSubview(self)
         let frame = self.tableView.frame
         self.tableView.frame = CGRect(x: tableViewStartPoint.x, y: tableViewStartPoint.y, width: 0, height: 0)
         UIView.animate(withDuration: 0.2) {

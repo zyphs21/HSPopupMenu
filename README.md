@@ -1,5 +1,8 @@
 # HSPopupMenu
 
+A simple popup dropdown menu
+
+![](https://raw.githubusercontent.com/zyphs21/HSPopupMenu/master/demo-screenshot.gif)
 
 ## Example
 

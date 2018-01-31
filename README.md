@@ -1,15 +1,14 @@
 # HSPopupMenu
 
-[![CI Status](http://img.shields.io/travis/zyphs21/HSPopupMenu.svg?style=flat)](https://travis-ci.org/zyphs21/HSPopupMenu)
-[![Version](https://img.shields.io/cocoapods/v/HSPopupMenu.svg?style=flat)](http://cocoapods.org/pods/HSPopupMenu)
-[![License](https://img.shields.io/cocoapods/l/HSPopupMenu.svg?style=flat)](http://cocoapods.org/pods/HSPopupMenu)
-[![Platform](https://img.shields.io/cocoapods/p/HSPopupMenu.svg?style=flat)](http://cocoapods.org/pods/HSPopupMenu)
 
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
+
+- Swift 4
+- iOS 8.0+
 
 ## Installation
 
@@ -23,6 +22,8 @@ pod 'HSPopupMenu'
 ## Author
 
 zyphs21, hansenhs21@live.com
+
+[Hanson's Blog](www.myhanson.com)
 
 ## License
 

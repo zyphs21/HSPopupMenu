@@ -26,11 +26,8 @@
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		6D49B4AEAC363BBE953D4E1A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		7C2E88451BE1101383A445CF /* HSPopupMenu.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = HSPopupMenu.podspec; path = ../HSPopupMenu.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		844CE972FE6FF8EAABB7CEB5 /* Pods_HSPopupMenu_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HSPopupMenu_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A78ECB0E610AA4090C8F5D7F /* Pods-HSPopupMenu_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HSPopupMenu_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-HSPopupMenu_Example/Pods-HSPopupMenu_Example.release.xcconfig"; sourceTree = "<group>"; };
-		D3A35ED920C81D2ED73B3045 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		EB96E8D7B1398B2151E10F9C /* Pods_HSPopupMenu_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HSPopupMenu_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -49,7 +46,6 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for HSPopupMenu */,
 				607FACD11AFB9204008FA782 /* Products */,
 				E31143291D5C4C1977A6D8BA /* Pods */,
@@ -85,16 +81,6 @@
 				607FACD41AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
-			isa = PBXGroup;
-			children = (
-				7C2E88451BE1101383A445CF /* HSPopupMenu.podspec */,
-				D3A35ED920C81D2ED73B3045 /* README.md */,
-				6D49B4AEAC363BBE953D4E1A /* LICENSE */,
-			);
-			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
 		82E759A9FC689767DFECEF5C /* Frameworks */ = {

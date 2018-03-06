@@ -23,7 +23,7 @@ public struct HSMenu {
 
 // MARK: - HSPopupMenuDelegate
 
-@objc protocol HSPopupMenuDelegate {
+@objc public protocol HSPopupMenuDelegate {
     
     func popupMenu(_ popupMenu: HSPopupMenu, didSelectAt index: Int)
 }
@@ -53,7 +53,7 @@ public class HSPopupMenu: UIView {
     
     var contentBgColor: UIColor = UIColor.black.withAlphaComponent(0.6)
     
-    weak var delegate: HSPopupMenuDelegate?
+    public weak var delegate: HSPopupMenuDelegate?
     
     fileprivate let CellID = "HSPopupMenuCell"
 
